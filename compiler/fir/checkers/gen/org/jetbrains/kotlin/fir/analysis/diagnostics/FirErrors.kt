@@ -33,6 +33,7 @@ import org.jetbrains.kotlin.fir.symbols.impl.FirVariableSymbol
 import org.jetbrains.kotlin.fir.types.ConeKotlinType
 import org.jetbrains.kotlin.lexer.KtKeywordToken
 import org.jetbrains.kotlin.lexer.KtModifierKeywordToken
+import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.psi.KtAnnotation
 import org.jetbrains.kotlin.psi.KtAnnotationEntry
@@ -198,6 +199,15 @@ object FirErrors {
     val INAPPLICABLE_PARAM_TARGET by error0<KtAnnotationEntry>()
     val REDUNDANT_ANNOTATION_TARGET by warning1<KtAnnotationEntry, String>()
     val INAPPLICABLE_FILE_TARGET by error0<KtAnnotationEntry>(SourceElementPositioningStrategies.ANNOTATION_USE_SITE)
+
+    // OptIn-related
+    val EXPERIMENTAL_API_USAGE by warning2<PsiElement, FqName, String>(SourceElementPositioningStrategies.REFERENCE_BY_QUALIFIED)
+    val EXPERIMENTAL_API_USAGE_ERROR by error2<PsiElement, FqName, String>(SourceElementPositioningStrategies.REFERENCE_BY_QUALIFIED)
+    val EXPERIMENTAL_OVERRIDE by warning2<PsiElement, FqName, String>()
+    val EXPERIMENTAL_OVERRIDE_ERROR by error2<PsiElement, FqName, String>()
+    val EXPERIMENTAL_IS_NOT_ENABLED by warning0<PsiElement>()
+    val EXPERIMENTAL_CAN_ONLY_BE_USED_AS_ANNOTATION by error0<PsiElement>()
+    val EXPERIMENTAL_MARKER_CAN_ONLY_BE_USED_AS_ANNOTATION_OR_ARGUMENT_IN_USE_EXPERIMENTAL by error0<PsiElement>()
 
     // Exposed visibility
     val EXPOSED_TYPEALIAS_EXPANDED_TYPE by error3<KtNamedDeclaration, EffectiveVisibility, FirMemberDeclaration, EffectiveVisibility>(SourceElementPositioningStrategies.DECLARATION_NAME)

@@ -10,7 +10,7 @@ fun f() {}
 // FILE: usage.kt
 
 fun use1() {
-    f()
+    <!EXPERIMENTAL_API_USAGE_ERROR!>f<!>()
 }
 
 @Marker
