@@ -6,9 +6,12 @@
 package org.jetbrains.kotlin.idea.fir.low.level.api.lazy.resolve
 
 import org.jetbrains.kotlin.fir.declarations.*
+import org.jetbrains.kotlin.fir.render
 import org.jetbrains.kotlin.fir.resolve.ScopeSession
 import org.jetbrains.kotlin.fir.types.FirResolvedTypeRef
 import org.jetbrains.kotlin.idea.fir.low.level.api.file.builder.ModuleFileCache
+import org.jetbrains.kotlin.idea.fir.low.level.api.file.builder.runCustomResolveUnderLock
+import org.jetbrains.kotlin.idea.fir.low.level.api.util.getContainingFile
 
 enum class ResolveType {
     NoResolve,
@@ -39,16 +42,13 @@ internal fun FirLazyDeclarationResolver.lazyResolveDeclaration(
             require(firDeclaration is FirCallableDeclaration<*>) {
                 "CallableReturnType type cannot be applied to ${firDeclaration::class.qualifiedName}"
             }
-            val stopAheadOfPhase = { declaration: FirDeclaration ->
-                declaration is FirCallableDeclaration<*> && declaration.returnTypeRef is FirResolvedTypeRef
-            }
+            //TODO Resolve to types if needed
             lazyResolveDeclaration(
                 firDeclarationToResolve = firDeclaration,
                 moduleFileCache = moduleFileCache,
                 toPhase = FirResolvePhase.IMPLICIT_TYPES_BODY_RESOLVE,
                 scopeSession = scopeSession,
                 checkPCE = checkPCE,
-                stopAheadOfPhase = stopAheadOfPhase,
             )
         }
         ResolveType.BodyResolveWithChildren, ResolveType.CallableBodyResolve -> {
