@@ -69,7 +69,9 @@ open class KotlinVariant(
 
     override fun getName(): String = componentName ?: producingCompilation.target.targetName
 
-    override var publishable: Boolean = target.publishable
+    override var publishable: Boolean = true
+    override val publishableOnCurrentHost: Boolean
+        get() = publishable && target.publishable
 
     override var sourcesArtifacts: Set<PublishArtifact> = emptySet()
         internal set
@@ -109,6 +111,9 @@ class JointAndroidKotlinTargetComponent(
 
     override val publishable: Boolean
         get() = nestedVariants.any { it.publishable }
+
+    override val publishableOnCurrentHost: Boolean
+        get() = publishable
 
     override val defaultArtifactId: String =
         dashSeparatedName(
