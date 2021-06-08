@@ -49,6 +49,16 @@ public class FirLazyDeclarationResolveTestGenerated extends AbstractFirLazyDecla
         runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/localDeclaration.kt");
     }
 
+    @TestMetadata("parameterOfLocalSetter.kt")
+    public void testParameterOfLocalSetter() throws Exception {
+        runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/parameterOfLocalSetter.kt");
+    }
+
+    @TestMetadata("parameterOfNonLocalSetter.kt")
+    public void testParameterOfNonLocalSetter() throws Exception {
+        runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/parameterOfNonLocalSetter.kt");
+    }
+
     @TestMetadata("propertyWithGetter.kt")
     public void testPropertyWithGetter() throws Exception {
         runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/propertyWithGetter.kt");
@@ -92,5 +102,25 @@ public class FirLazyDeclarationResolveTestGenerated extends AbstractFirLazyDecla
     @TestMetadata("topLevelFunctionsWithImplicitType.kt")
     public void testTopLevelFunctionsWithImplicitType() throws Exception {
         runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/topLevelFunctionsWithImplicitType.kt");
+    }
+
+    @TestMetadata("typeParameterOfLocalFunction.kt")
+    public void testTypeParameterOfLocalFunction() throws Exception {
+        runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/typeParameterOfLocalFunction.kt");
+    }
+
+    @TestMetadata("typeParameterOfNonLocalFunction.kt")
+    public void testTypeParameterOfNonLocalFunction() throws Exception {
+        runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/typeParameterOfNonLocalFunction.kt");
+    }
+
+    @TestMetadata("typeParameterOfTopFunction.kt")
+    public void testTypeParameterOfTopFunction() throws Exception {
+        runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/typeParameterOfTopFunction.kt");
+    }
+
+    @TestMetadata("typeParameterOfTopSetter.kt")
+    public void testTypeParameterOfTopSetter() throws Exception {
+        runTest("idea/idea-frontend-fir/idea-fir-low-level-api/testdata/lazyResolve/typeParameterOfTopSetter.kt");
     }
 }

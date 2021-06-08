@@ -1,27 +1,32 @@
 RAW_FIR:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| {
+    }
 
 IMPORTS:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| {
+    }
 
 SUPER_TYPES:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| {
+    }
 
 TYPES:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+    }
 
 STATUS:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @R|kotlin/Suppress|(String(2)) public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @R|kotlin/Suppress|(String(2)) public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| {
+    }
 
 CONTRACTS:
 FILE: annotations.kt
@@ -44,7 +49,8 @@ FILE: annotations.kt
 NoResolve:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| {
+    }
 
 BodyResolveWithChildren:
 FILE: annotations.kt
@@ -61,12 +67,14 @@ FILE: annotations.kt
 CallableReturnType:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @Suppress(String(2)) public? final? fun resolveMe(): R|kotlin/Unit| {
+    }
 
 AnnotationType:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+    }
 
 AnnotationsArguments:
 FILE: annotations.kt
@@ -83,17 +91,20 @@ FILE: annotations.kt
 DeclarationStatus:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @R|kotlin/Suppress|(String(2)) public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @R|kotlin/Suppress|(String(2)) public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| {
+    }
 
 ValueParametersTypes:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+    }
 
 TypeParametersTypes:
 FILE: annotations.kt
     @FILE:Suppress(String(1))
-    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
+    @R|kotlin/Suppress|(String(2)) public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+    }
 
 FILE RAW TO BODY:
 FILE: annotations.kt

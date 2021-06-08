@@ -1,31 +1,41 @@
 RAW_FIR:
 FILE: propertyWithInitializer.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 IMPORTS:
 FILE: propertyWithInitializer.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 SUPER_TYPES:
 FILE: propertyWithInitializer.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 TYPES:
 FILE: propertyWithInitializer.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 STATUS:
 FILE: propertyWithInitializer.kt
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 CONTRACTS:
@@ -33,7 +43,7 @@ FILE: propertyWithInitializer.kt
     public final [ResolvePhaseWithForAllDeclarationsKey=CONTRACTS] fun resolveMe(): R|kotlin/Unit| {
         receive#(property#)
     }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 IMPLICIT_TYPES_BODY_RESOLVE:
@@ -41,7 +51,7 @@ FILE: propertyWithInitializer.kt
     public final [ResolvePhaseWithForAllDeclarationsKey=IMPLICIT_TYPES_BODY_RESOLVE] fun resolveMe(): R|kotlin/Unit| {
         receive#(property#)
     }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 BODY_RESOLVE:
@@ -49,13 +59,15 @@ FILE: propertyWithInitializer.kt
     public final [ResolvePhaseWithForAllDeclarationsKey=BODY_RESOLVE] fun resolveMe(): R|kotlin/Unit| {
         <Unresolved name: receive>#(R|/property|)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = IntegerLiteral(10)
         public get(): R|kotlin/Int|
 
 NoResolve:
 FILE: propertyWithInitializer.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 BodyResolveWithChildren:
@@ -63,7 +75,7 @@ FILE: propertyWithInitializer.kt
     public final [ResolvePhaseWithForAllDeclarationsKey=BODY_RESOLVE] fun resolveMe(): R|kotlin/Unit| {
         <Unresolved name: receive>#(R|/property|)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = IntegerLiteral(10)
         public get(): R|kotlin/Int|
 
 CallableBodyResolve:
@@ -71,19 +83,23 @@ FILE: propertyWithInitializer.kt
     public final [ResolvePhaseWithForAllDeclarationsKey=BODY_RESOLVE] fun resolveMe(): R|kotlin/Unit| {
         <Unresolved name: receive>#(R|/property|)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = IntegerLiteral(10)
         public get(): R|kotlin/Int|
 
 CallableReturnType:
 FILE: propertyWithInitializer.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 AnnotationType:
 FILE: propertyWithInitializer.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 AnnotationsArguments:
@@ -91,7 +107,7 @@ FILE: propertyWithInitializer.kt
     public final [ResolvePhaseWithForAllDeclarationsKey=BODY_RESOLVE] fun resolveMe(): R|kotlin/Unit| {
         <Unresolved name: receive>#(R|/property|)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val property: R|kotlin/Int| = IntegerLiteral(10)
         public get(): R|kotlin/Int|
 
 CallableContracts:
@@ -99,25 +115,31 @@ FILE: propertyWithInitializer.kt
     public final [ResolvePhaseWithForAllDeclarationsKey=CONTRACTS] fun resolveMe(): R|kotlin/Unit| {
         receive#(property#)
     }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 DeclarationStatus:
 FILE: propertyWithInitializer.kt
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 ValueParametersTypes:
 FILE: propertyWithInitializer.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 TypeParametersTypes:
 FILE: propertyWithInitializer.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val property: Int = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(property#)
+    }
+    public? final? val property: Int = IntegerLiteral(10)
         public? get(): Int
 
 FILE RAW TO BODY:

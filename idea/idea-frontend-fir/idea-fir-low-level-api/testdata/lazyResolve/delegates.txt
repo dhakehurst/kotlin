@@ -1,25 +1,44 @@
 RAW_FIR:
 FILE: delegates.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -29,26 +48,45 @@ FILE: delegates.kt
 
 IMPORTS:
 FILE: delegates.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -58,26 +96,45 @@ FILE: delegates.kt
 
 SUPER_TYPES:
 FILE: delegates.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -87,26 +144,45 @@ FILE: delegates.kt
 
 TYPES:
 FILE: delegates.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -116,26 +192,45 @@ FILE: delegates.kt
 
 STATUS:
 FILE: delegates.kt
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -151,25 +246,39 @@ FILE: delegates.kt
         variableWithExplicitType# = IntegerLiteral(10)
         variableWithImplicitType# = IntegerLiteral(10)
     }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -185,25 +294,39 @@ FILE: delegates.kt
         variableWithExplicitType# = IntegerLiteral(10)
         variableWithImplicitType# = IntegerLiteral(10)
     }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -219,7 +342,8 @@ FILE: delegates.kt
         R|/variableWithExplicitType| = Int(10)
         R|/variableWithImplicitType| = Int(10)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| { LAZY_BLOCK }
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| {
+    }
     public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val delegate: R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| = object : R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| {
         private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
             super<R|kotlin/Any|>()
@@ -235,7 +359,7 @@ FILE: delegates.kt
     }
 
         public get(): R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>|
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
@@ -243,7 +367,7 @@ FILE: delegates.kt
         public get(): R|kotlin/Int| {
             ^ D|/valueWithImplicitType|.R|SubstitutionOverride<kotlin/properties/ReadWriteProperty.getValue: R|kotlin/Int|>|(Null(null), ::R|/valueWithImplicitType|)
         }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
@@ -260,26 +384,45 @@ FILE: delegates.kt
 
 NoResolve:
 FILE: delegates.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -295,7 +438,8 @@ FILE: delegates.kt
         R|/variableWithExplicitType| = Int(10)
         R|/variableWithImplicitType| = Int(10)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| { LAZY_BLOCK }
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| {
+    }
     public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val delegate: R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| = object : R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| {
         private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
             super<R|kotlin/Any|>()
@@ -311,7 +455,7 @@ FILE: delegates.kt
     }
 
         public get(): R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>|
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
@@ -319,7 +463,7 @@ FILE: delegates.kt
         public get(): R|kotlin/Int| {
             ^ D|/valueWithImplicitType|.R|SubstitutionOverride<kotlin/properties/ReadWriteProperty.getValue: R|kotlin/Int|>|(Null(null), ::R|/valueWithImplicitType|)
         }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
@@ -342,7 +486,8 @@ FILE: delegates.kt
         R|/variableWithExplicitType| = Int(10)
         R|/variableWithImplicitType| = Int(10)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| { LAZY_BLOCK }
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| {
+    }
     public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val delegate: R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| = object : R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| {
         private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
             super<R|kotlin/Any|>()
@@ -358,7 +503,7 @@ FILE: delegates.kt
     }
 
         public get(): R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>|
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
@@ -366,7 +511,7 @@ FILE: delegates.kt
         public get(): R|kotlin/Int| {
             ^ D|/valueWithImplicitType|.R|SubstitutionOverride<kotlin/properties/ReadWriteProperty.getValue: R|kotlin/Int|>|(Null(null), ::R|/valueWithImplicitType|)
         }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
@@ -383,26 +528,45 @@ FILE: delegates.kt
 
 CallableReturnType:
 FILE: delegates.kt
-    public? final? fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -412,26 +576,45 @@ FILE: delegates.kt
 
 AnnotationType:
 FILE: delegates.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -447,7 +630,8 @@ FILE: delegates.kt
         R|/variableWithExplicitType| = Int(10)
         R|/variableWithImplicitType| = Int(10)
     }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| { LAZY_BLOCK }
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun receive(value: R|kotlin/Int|): R|kotlin/Unit| {
+    }
     public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val delegate: R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| = object : R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>| {
         private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
             super<R|kotlin/Any|>()
@@ -463,7 +647,7 @@ FILE: delegates.kt
     }
 
         public get(): R|kotlin/properties/ReadWriteProperty<kotlin/Any?, kotlin/Int>|
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] val valueWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
@@ -471,7 +655,7 @@ FILE: delegates.kt
         public get(): R|kotlin/Int| {
             ^ D|/valueWithImplicitType|.R|SubstitutionOverride<kotlin/properties/ReadWriteProperty.getValue: R|kotlin/Int|>|(Null(null), ::R|/valueWithImplicitType|)
         }
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] var variableWithExplicitType: R|kotlin/Int|by delegate#
         public get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
@@ -494,25 +678,39 @@ FILE: delegates.kt
         variableWithExplicitType# = IntegerLiteral(10)
         variableWithImplicitType# = IntegerLiteral(10)
     }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -522,26 +720,45 @@ FILE: delegates.kt
 
 DeclarationStatus:
 FILE: delegates.kt
-    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public final [ResolvePhaseWithForAllDeclarationsKey=STATUS] fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -551,26 +768,45 @@ FILE: delegates.kt
 
 ValueParametersTypes:
 FILE: delegates.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }
@@ -580,26 +816,45 @@ FILE: delegates.kt
 
 TypeParametersTypes:
 FILE: delegates.kt
-    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? fun receive(value: Int): R|kotlin/Unit| { LAZY_BLOCK }
-    public? final? val delegate: <implicit> = LAZY_EXPRESSION
+    public? final? [ResolvePhaseWithForAllDeclarationsKey=TYPES] fun resolveMe(): R|kotlin/Unit| {
+        receive#(valueWithExplicitType#)
+        receive#(valueWithImplicitType#)
+        variableWithExplicitType# = IntegerLiteral(10)
+        variableWithImplicitType# = IntegerLiteral(10)
+    }
+    public? final? fun receive(value: Int): R|kotlin/Unit| {
+    }
+    public? final? val delegate: <implicit> = object : ReadWriteProperty<Any?, Int> {
+        private [ContainingClassKey=<anonymous>] constructor(): R|<anonymous>| {
+            super<<implicit>>()
+        }
+
+        public? open? override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+            ^getValue IntegerLiteral(1)
+        }
+
+        public? open? override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int): R|kotlin/Unit| {
+        }
+
+    }
+
         public? get(): <implicit>
-    public? final? val valueWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? val valueWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/valueWithExplicitType|.getValue#(Null(null), ::R|/valueWithExplicitType|)
         }
-    public? final? val valueWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? val valueWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/valueWithImplicitType|.getValue#(Null(null), ::R|/valueWithImplicitType|)
         }
-    public? final? var variableWithExplicitType: Intby LAZY_EXPRESSION
+    public? final? var variableWithExplicitType: Intby delegate#
         public? get(): <implicit> {
             ^ D|/variableWithExplicitType|.getValue#(Null(null), ::R|/variableWithExplicitType|)
         }
         public? set(<set-?>: <implicit>): R|kotlin/Unit| {
             D|/variableWithExplicitType|.setValue#(Null(null), ::R|/variableWithExplicitType|, R|<local>/variableWithExplicitType|)
         }
-    public? final? var variableWithImplicitType: <implicit>by LAZY_EXPRESSION
+    public? final? var variableWithImplicitType: <implicit>by delegate#
         public? get(): <implicit> {
             ^ D|/variableWithImplicitType|.getValue#(Null(null), ::R|/variableWithImplicitType|)
         }

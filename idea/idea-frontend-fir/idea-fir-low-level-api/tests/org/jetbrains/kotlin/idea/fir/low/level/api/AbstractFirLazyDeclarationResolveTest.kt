@@ -7,9 +7,9 @@ package org.jetbrains.kotlin.idea.fir.low.level.api
 
 import com.intellij.openapi.util.io.FileUtil
 import com.intellij.testFramework.LightProjectDescriptor
-import org.jetbrains.kotlin.fir.FirRenderer
-import org.jetbrains.kotlin.fir.declarations.FirResolvePhase
-import org.jetbrains.kotlin.fir.render
+import org.jetbrains.kotlin.fir.*
+import org.jetbrains.kotlin.fir.declarations.*
+import org.jetbrains.kotlin.fir.visitors.FirVisitorVoid
 import org.jetbrains.kotlin.idea.caches.project.ModuleSourceInfo
 import org.jetbrains.kotlin.idea.caches.project.getModuleInfo
 import org.jetbrains.kotlin.idea.fir.low.level.api.api.withFirDeclaration
@@ -32,19 +32,35 @@ import java.io.File
 abstract class AbstractFirLazyDeclarationResolveTest : KotlinLightCodeInsightFixtureTestCase() {
     override fun isFirPlugin(): Boolean = true
 
+    private fun FirFile.findResolveMe(): FirDeclaration {
+        val visitor = object : FirVisitorVoid() {
+            var result: FirDeclaration? = null
+            override fun visitElement(element: FirElement) {
+                if (result != null) return
+                val declaration = element.realPsi as? KtDeclaration
+                if (element is FirDeclaration && declaration != null && declaration.name == "resolveMe") {
+                    result = element
+                    return
+                }
+                element.acceptChildren(this)
+            }
+
+        }
+        accept(visitor)
+        return visitor.result ?: error("declaration with name `resolveMe` was not found")
+    }
+
+
     fun doTest(path: String) {
         val testDataFile = File(path)
         val ktFile = myFixture.configureByText(testDataFile.name, FileUtil.loadFile(testDataFile)) as KtFile
-        val lazyDeclarations = ktFile.collectDescendantsOfType<KtDeclaration> { ktDeclaration ->
-            declarationCanBeLazilyResolved(ktDeclaration)
-        }
 
         val resultBuilder = StringBuilder()
-        val declarationToResolve = lazyDeclarations.firstOrNull { it.name?.lowercase() == "resolveme" }
-            ?: error("declaration with name `resolveMe` was not found")
-
         resolveWithClearCaches(ktFile) { firModuleResolveState ->
             check(firModuleResolveState is FirModuleResolveStateImpl)
+            val declarationToResolve = firModuleResolveState
+                .getOrBuildFirFile(ktFile)
+                .findResolveMe()
             for (currentPhase in FirResolvePhase.values()) {
                 if (currentPhase.pluginPhase || currentPhase == FirResolvePhase.SEALED_CLASS_INHERITORS) continue
                 declarationToResolve.withFirDeclaration(firModuleResolveState, currentPhase) {
@@ -56,18 +72,22 @@ abstract class AbstractFirLazyDeclarationResolveTest : KotlinLightCodeInsightFix
         }
 
         for (resolveType in ResolveType.values()) {
-            when (resolveType) {
-                ResolveType.CallableReturnType,
-                ResolveType.CallableBodyResolve,
-                ResolveType.CallableContracts -> if (declarationToResolve !is KtCallableDeclaration) continue
-                ResolveType.ClassSuperTypes -> if (declarationToResolve !is KtClassOrObject) continue
-                else -> {
-                }
-            }
-
             resolveWithClearCaches(ktFile) { firModuleResolveState ->
                 check(firModuleResolveState is FirModuleResolveStateImpl)
-                declarationToResolve.withFirDeclaration(firModuleResolveState, resolveType) {
+                val declarationToResolve = firModuleResolveState
+                    .getOrBuildFirFile(ktFile)
+                    .findResolveMe()
+
+                when (resolveType) {
+                    ResolveType.CallableReturnType,
+                    ResolveType.CallableBodyResolve,
+                    ResolveType.CallableContracts -> if (declarationToResolve !is FirCallableDeclaration<*>) return@resolveWithClearCaches
+                    ResolveType.ClassSuperTypes -> if (declarationToResolve !is FirClassLikeDeclaration<*>) return@resolveWithClearCaches
+                    else -> {
+                    }
+                }
+
+                declarationToResolve.withFirDeclaration(resolveType, firModuleResolveState) {
                     val firFile = firModuleResolveState.getOrBuildFirFile(ktFile)
                     resultBuilder.append("\n${resolveType.name}:\n")
                     resultBuilder.append(firFile.render(FirRenderer.RenderMode.WithDeclarationAttributes))
