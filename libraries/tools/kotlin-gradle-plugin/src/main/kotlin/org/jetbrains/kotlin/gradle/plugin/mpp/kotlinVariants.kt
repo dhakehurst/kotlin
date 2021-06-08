@@ -105,7 +105,7 @@ class JointAndroidKotlinTargetComponent(
     override val sourcesArtifacts: Set<PublishArtifact>
 ) : KotlinTargetComponentWithCoordinatesAndPublication, SoftwareComponentInternal {
 
-    override fun getUsages(): Set<KotlinUsageContext> = nestedVariants.flatMap { it.usages }.toSet()
+    override fun getUsages(): Set<KotlinUsageContext> = nestedVariants.filter { it.publishable }.flatMap { it.usages }.toSet()
 
     override fun getName(): String = lowerCamelCaseName(target.targetName, *flavorNames.toTypedArray())
 
