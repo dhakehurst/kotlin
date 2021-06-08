@@ -169,7 +169,7 @@ class K2Native : CLICompiler<K2NativeCompilerArguments>() {
                         null
                     }
                 })
-                putIfNotNull(GENERATE_DEBUG_TRAMBOLINE, when (val it = arguments.generateDebugTrambolineString) {
+                putIfNotNull(GENERATE_DEBUG_TRAMPOLINE, when (val it = arguments.generateDebugTrampolineString) {
                     "enable" -> true
                     "disable" -> false
                     null -> null

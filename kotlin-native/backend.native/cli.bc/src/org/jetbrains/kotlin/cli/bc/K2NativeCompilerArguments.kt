@@ -166,11 +166,11 @@ class K2NativeCompilerArguments : CommonCompilerArguments() {
     var lightDebugDeprecated: Boolean = false
 
     @Argument(
-            value = "-Xg-generate-debug-tramboline",
+            value = "-Xg-generate-debug-trampoline",
             valueDescription = "{disable|enable}",
-            description = """generates marker of when to make debugger breakpoint resolution more accurate"""
+            description = """generates trampolines to make debugger breakpoint resolution more accurate (inlines, when, etc.)"""
     )
-    var generateDebugTrambolineString: String? = null
+    var generateDebugTrampolineString: String? = null
 
 
     @Argument(

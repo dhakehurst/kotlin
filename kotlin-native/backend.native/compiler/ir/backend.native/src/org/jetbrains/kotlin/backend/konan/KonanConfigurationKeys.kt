@@ -56,8 +56,8 @@ class KonanConfigKeys {
                 = CompilerConfigurationKey.create("library version")
         val LIGHT_DEBUG: CompilerConfigurationKey<Boolean?>
                 = CompilerConfigurationKey.create("add light debug information")
-        val GENERATE_DEBUG_TRAMBOLINE: CompilerConfigurationKey<Boolean?>
-                = CompilerConfigurationKey.create("generates when marker on call site")
+        val GENERATE_DEBUG_TRAMPOLINE: CompilerConfigurationKey<Boolean?>
+                = CompilerConfigurationKey.create("generates debug trampolines on call site")
         val LINKER_ARGS: CompilerConfigurationKey<List<String>>
                 = CompilerConfigurationKey.create("additional linker arguments")
         val LIST_PHASES: CompilerConfigurationKey<Boolean>
