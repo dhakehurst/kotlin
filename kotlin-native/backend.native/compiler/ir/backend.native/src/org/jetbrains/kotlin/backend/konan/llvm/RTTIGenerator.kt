@@ -11,6 +11,7 @@ import org.jetbrains.kotlin.backend.konan.Context
 import org.jetbrains.kotlin.backend.konan.descriptors.*
 import org.jetbrains.kotlin.backend.konan.ir.*
 import org.jetbrains.kotlin.backend.konan.isExternalObjCClassMethod
+import org.jetbrains.kotlin.backend.konan.lower.FunctionReferenceLowering.Companion.isLoweredFunctionReference
 import org.jetbrains.kotlin.builtins.PrimitiveType
 import org.jetbrains.kotlin.ir.declarations.*
 import org.jetbrains.kotlin.ir.symbols.isPublicApi
@@ -575,17 +576,25 @@ internal class RTTIGenerator(override val context: Context) : ContextUtils {
                 relativeName = context.getLocalClassName(irClass)
                 flags = TF_REFLECTION_SHOW_REL_NAME // Only allow relative name to be used in KClass.simpleName.
             }
+            isLoweredFunctionReference(irClass) -> {
+                // TODO: might return null so use fallback here, to be fixed in KT-47194
+                relativeName = context.getLocalClassName(irClass) ?: generateDefaultRelativeName(irClass)
+                flags = 0 // Forbid to use package and relative names in KClass.[simpleName|qualifiedName].
+            }
             else -> {
-                relativeName = generateSequence(irClass) { it.parent as? IrClass }
-                        .toList().reversed()
-                        .joinToString(".") { it.name.asString() }
-                flags = TF_REFLECTION_SHOW_PKG_NAME or TF_REFLECTION_SHOW_REL_NAME // Allow both package and relative names
-                // to be used in KClass.[simpleName|qualifiedName].
+                relativeName = generateDefaultRelativeName(irClass)
+                flags = TF_REFLECTION_SHOW_PKG_NAME or TF_REFLECTION_SHOW_REL_NAME // Allow both package and relative names to be used in
+                // KClass.[simpleName|qualifiedName].
             }
         }
 
         return ReflectionInfo(packageName, relativeName, flags)
     }
+
+    private fun generateDefaultRelativeName(irClass: IrClass) =
+            generateSequence(irClass) { it.parent as? IrClass }
+                    .toList().reversed()
+                    .joinToString(".") { it.name.asString() }
 
     fun dispose() {
         debugRuntimeOrNull?.let { LLVMDisposeModule(it) }

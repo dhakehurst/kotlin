@@ -266,6 +266,10 @@ internal class Context(config: KonanConfig) : KonanBackendContext(config) {
         localClassNames[container.attributeOwnerId] = name
     }
 
+    fun copyLocalClassName(source: IrAttributeContainer, destination: IrAttributeContainer) {
+        getLocalClassName(source)?.let { name -> putLocalClassName(destination, name) }
+    }
+
     val reflectionTypes: KonanReflectionTypes by lazy(PUBLICATION) {
         KonanReflectionTypes(moduleDescriptor, KonanFqNames.internalPackageName)
     }

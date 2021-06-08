@@ -18,6 +18,7 @@ fun main(args: Array<String>) {
     checkLocalClasses(args)
     checkAnonymousObjects(args)
     checkAnonymousObjectsAssignedToProperty(args)
+    checkFunctionReferences()
     checkInterfaces()
     checkEtc()
 }
@@ -522,6 +523,20 @@ private fun checkAnonymousObjectsAssignedToProperty(args: Array<String>) {
         )
     }
     ::suspendFunWithAnonymousObject.runCoroutine()
+}
+
+private fun checkFunctionReferences() {
+    // TODO add tests for lambdas and anonymous functions, see KT-47194
+    fun foo() = Unit
+    val ref = ::foo
+    checkClass(
+            clazz = ref::class,
+            expectedQualifiedName = null,
+            expectedSimpleName = null,
+            expectedToStringName = "class codegen.kclass.kclass0.checkFunctionReferences\$ref\$1",
+            expectedInstance = ref,
+            expectedNotInstance = Any()
+    )
 }
 
 private fun checkInterfaces() {
