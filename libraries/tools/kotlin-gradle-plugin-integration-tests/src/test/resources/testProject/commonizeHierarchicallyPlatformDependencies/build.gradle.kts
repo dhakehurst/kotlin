@@ -24,9 +24,8 @@ fun createPlatformDependenciesTestTask(sourceSet: DefaultKotlinSourceSet) {
                 logger.quiet("${sourceSet.name} dependency: ${dependency.path}")
             }
 
-            val commonizedKlibPattern = listOf("", "klib", "commonized").joinToString(File.separator)
             dependencies.forEach { dependency ->
-                if (commonizedKlibPattern in dependency.path) {
+                if ("klib${File.separator}commonized" in dependency.path) {
                     throw AssertionError(
                         "${sourceSet.name}: Found unexpected commonized dependency ${dependency.path}"
                     )
@@ -37,7 +36,7 @@ fun createPlatformDependenciesTestTask(sourceSet: DefaultKotlinSourceSet) {
                 throw AssertionError("${sourceSet.name}: Expected at least one platform dependency")
             }
 
-            val platformKlibPattern = listOf("", "klib", "platform").joinToString(File.separator)
+            val platformKlibPattern = "klib${File.separator}platform"
             if (dependencies.none { dependency -> platformKlibPattern in dependency.path }) {
                 throw AssertionError("${sourceSet.name}: Expected at least one dependency from '$platformKlibPattern'")
             }

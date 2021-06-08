@@ -7,6 +7,7 @@ package org.jetbrains.kotlin.gradle
 
 import org.gradle.api.logging.configuration.WarningMode
 import org.gradle.internal.os.OperatingSystem
+import org.jetbrains.kotlin.konan.file.File
 import org.junit.Test
 
 class CommonizerHierarchicalIT : BaseGradleIT() {
@@ -115,12 +116,14 @@ class CommonizerHierarchicalIT : BaseGradleIT() {
     fun `test platform dependencies on leaf source sets`() {
         with(Project("commonizeHierarchicallyPlatformDependencies")) {
             build(":checkPlatformDependencies") {
+                val klibPlatform = "${File.separator}klib${File.separator}platform${File.separator}"
+
                 assertSuccessful()
                 assertTasksExecuted(":commonizeNativeDistribution")
                 assertTasksExecuted(":checkLinuxX64MainPlatformDependencies")
                 assertTasksExecuted(":checkLinuxArm64MainPlatformDependencies")
-                assertContainsRegex(Regex(""".*linuxX64Main.*/klib/platform/.*[Pp]osix.*"""))
-                assertContainsRegex(Regex(""".*linuxArm64Main.*/klib/platform/.*[Pp]osix.*"""))
+                assertContainsRegex(Regex(""".*linuxX64Main.*$klibPlatform.*[Pp]osix.*"""))
+                assertContainsRegex(Regex(""".*linuxArm64Main.*$klibPlatform.*[Pp]osix.*"""))
             }
         }
     }
