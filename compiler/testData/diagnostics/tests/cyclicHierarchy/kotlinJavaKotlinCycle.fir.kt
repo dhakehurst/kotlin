@@ -6,7 +6,7 @@ open class I : K() {
 
 // FILE: J.java
 
-class J extends I {
+public class J extends I {
     void bar() {}
 }
 
