@@ -180,14 +180,13 @@ internal class ConeTypeIdeRenderer(
     private fun collectDesignationPathForLocal(declaration: FirDeclaration): List<FirDeclaration>? {
         val containingClass = when (declaration) {
             is FirCallableDeclaration<*> -> declaration.containingClass()?.toFirRegularClass(declaration.moduleData.session)
-            is FirAnonymousObject -> return emptyList()
+            is FirAnonymousObject -> return listOf(declaration)
             is FirClassLikeDeclaration<*> -> declaration.let {
-                declaration.isLocal.ifTrue {
-                    (it as? FirRegularClass)?.containingClassForLocal()?.toFirRegularClass(declaration.moduleData.session)
-                }
+                if (!declaration.isLocal) return null
+                (it as? FirRegularClass)?.containingClassForLocal()?.toFirRegularClass(declaration.moduleData.session)
             }
             else -> error("Invalid declaration ${declaration.renderWithType()}")
-        } ?: return null
+        } ?: return listOf(declaration)
 
         return containingClass.isLocal.ifTrue { containingClass.collectForLocal().reversed() }
     }
