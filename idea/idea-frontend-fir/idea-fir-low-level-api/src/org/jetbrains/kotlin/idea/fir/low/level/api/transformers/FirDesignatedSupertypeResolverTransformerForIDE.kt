@@ -149,7 +149,7 @@ internal class FirDesignatedSupertypeResolverTransformerForIDE(
         targetDesignation.declaration.updateResolvedPhaseForDeclarationAndChildren(FirResolvePhase.SUPER_TYPES)
 
         if (checkPCE) checkCanceled()
-        val applier = DesignatedFirApplySupertypesTransformer(designation)
+        val applier = DesignatedFirApplySupertypesTransformer(targetDesignation)
         phaseRunner.runPhaseWithCustomResolve(FirResolvePhase.SUPER_TYPES) {
             collect(targetDesignation)
             supertypeComputationSession.breakLoops(session)
