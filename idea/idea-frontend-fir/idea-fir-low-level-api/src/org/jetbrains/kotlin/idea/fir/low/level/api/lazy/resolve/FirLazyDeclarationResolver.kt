@@ -314,8 +314,6 @@ internal class FirLazyDeclarationResolver(private val firFileBuilder: FirFileBui
             ).transformDeclaration(firFileBuilder.firPhaseRunner)
         }
     }
-
-
 }
 
 
