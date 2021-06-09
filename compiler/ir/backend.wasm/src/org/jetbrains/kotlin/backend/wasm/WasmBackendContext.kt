@@ -25,6 +25,7 @@ import org.jetbrains.kotlin.ir.descriptors.IrBuiltIns
 import org.jetbrains.kotlin.ir.symbols.impl.DescriptorlessExternalPackageFragmentSymbol
 import org.jetbrains.kotlin.ir.util.SymbolTable
 import org.jetbrains.kotlin.name.FqName
+import org.jetbrains.kotlin.name.FqNamePattern
 import org.jetbrains.kotlin.name.Name
 
 class WasmBackendContext(
@@ -32,7 +33,7 @@ class WasmBackendContext(
     override val irBuiltIns: IrBuiltIns,
     @Suppress("UNUSED_PARAMETER") symbolTable: SymbolTable,
     @Suppress("UNUSED_PARAMETER") irModuleFragment: IrModuleFragment,
-    val additionalExportedDeclarations: Set<FqName>,
+    val additionalExportedDeclarations: Set<FqNamePattern>,
     override val configuration: CompilerConfiguration,
 ) : JsCommonBackendContext {
     override val builtIns = module.builtIns

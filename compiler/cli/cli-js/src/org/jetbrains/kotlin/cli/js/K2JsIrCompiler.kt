@@ -44,7 +44,7 @@ import org.jetbrains.kotlin.ir.declarations.persistent.PersistentIrFactory
 import org.jetbrains.kotlin.js.config.*
 import org.jetbrains.kotlin.library.KLIB_FILE_EXTENSION
 import org.jetbrains.kotlin.metadata.deserialization.BinaryVersion
-import org.jetbrains.kotlin.name.FqName
+import org.jetbrains.kotlin.name.FqNamePattern
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.resolve.CompilerEnvironment
 import org.jetbrains.kotlin.serialization.js.ModuleKind
@@ -119,6 +119,7 @@ class K2JsIrCompiler : CLICompiler<K2JSCompilerArguments>() {
         val libraries: List<String> = configureLibraries(arguments.libraries) + listOfNotNull(arguments.includes)
         val friendLibraries: List<String> = configureLibraries(arguments.friendModules)
         val repositories: List<String> = configureLibraries(arguments.repositries)
+        val additionalExports: Set<FqNamePattern> = configureAdditionalExports(arguments.additionalExports)
 
         configuration.put(JSConfigurationKeys.LIBRARIES, libraries)
         configuration.put(JSConfigurationKeys.TRANSITIVE_LIBRARIES, libraries)
@@ -235,7 +236,7 @@ class K2JsIrCompiler : CLICompiler<K2JSCompilerArguments>() {
                     IrFactoryImpl,
                     allDependencies = resolvedLibraries,
                     friendDependencies = friendDependencies,
-                    exportedDeclarations = setOf(FqName("main"))
+                    exportedDeclarations = setOf(FqNamePattern("main")) + additionalExports
                 )
                 val outputWasmFile = outputFile.withReplacedExtensionOrNull(outputFile.extension, "wasm")!!
                 outputWasmFile.writeBytes(res.wasm)
@@ -273,6 +274,7 @@ class K2JsIrCompiler : CLICompiler<K2JSCompilerArguments>() {
                 multiModule = arguments.irPerModule,
                 relativeRequirePath = true,
                 propertyLazyInitialization = arguments.irPropertyLazyInitialization,
+                exportedDeclarations = additionalExports
             )
 
 
@@ -423,6 +425,9 @@ class K2JsIrCompiler : CLICompiler<K2JSCompilerArguments>() {
 
         private fun configureLibraries(libraryString: String?): List<String> =
             libraryString?.splitByPathSeparator() ?: emptyList()
+
+        private fun configureAdditionalExports(additionalExportsString: String?): Set<FqNamePattern> =
+            additionalExportsString?.splitByPathSeparator()?.map { FqNamePattern(it) }?.toSet() ?: emptySet()
 
         private fun String.splitByPathSeparator(): List<String> {
             return this.split(File.pathSeparator.toRegex())

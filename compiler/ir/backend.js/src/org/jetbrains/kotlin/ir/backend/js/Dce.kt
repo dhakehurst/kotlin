@@ -33,6 +33,22 @@ fun eliminateDeadDeclarations(
     context: JsIrBackendContext
 ) {
 
+    modules.forEach {
+        it.acceptVoid(object:IrElementVisitorVoid{
+            override fun visitElement(element: IrElement) {
+                element.acceptChildrenVoid(this)
+            }
+            override fun visitClass(declaration: IrClass) {
+                val declFqName = declaration.parent.kotlinFqName.child(declaration.name)
+                val shouldExport = context.additionalExportedDeclarationNames.any {
+                    it.matches(declFqName)
+                }
+                if (shouldExport) context.additionalExportedDeclarations.add(declaration)
+                super.visitClass(declaration)
+            }
+        })
+    }
+
     val allRoots = context.irFactory.stageController.withInitialIr { buildRoots(modules, context) }
 
     val usefulDeclarations = usefulDeclarations(allRoots, context)

@@ -21,6 +21,7 @@ import org.jetbrains.kotlin.ir.util.patchDeclarationParents
 import org.jetbrains.kotlin.library.KotlinLibrary
 import org.jetbrains.kotlin.library.resolver.KotlinLibraryResolveResult
 import org.jetbrains.kotlin.name.FqName
+import org.jetbrains.kotlin.name.FqNamePattern
 import org.jetbrains.kotlin.psi2ir.generators.generateTypicalIrProviderList
 import org.jetbrains.kotlin.wasm.ir.convertors.WasmIrToBinary
 import org.jetbrains.kotlin.wasm.ir.convertors.WasmIrToText
@@ -37,7 +38,7 @@ fun compileWasm(
     irFactory: IrFactory,
     allDependencies: KotlinLibraryResolveResult,
     friendDependencies: List<KotlinLibrary>,
-    exportedDeclarations: Set<FqName> = emptySet()
+    exportedDeclarations: Set<FqNamePattern> = emptySet()
 ): WasmCompilerResult {
     val (moduleFragment, dependencyModules, irBuiltIns, symbolTable, deserializer) =
         loadIr(project, mainModule, analyzer, configuration, allDependencies, friendDependencies, irFactory)

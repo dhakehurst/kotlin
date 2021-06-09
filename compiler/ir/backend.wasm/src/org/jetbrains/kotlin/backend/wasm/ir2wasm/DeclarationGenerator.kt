@@ -372,4 +372,4 @@ fun IrFunction.getEffectiveValueParameters(): List<IrValueParameter> {
 }
 
 fun IrFunction.isExported(context: WasmBackendContext): Boolean =
-    visibility == DescriptorVisibilities.PUBLIC && fqNameWhenAvailable in context.additionalExportedDeclarations
+    visibility == DescriptorVisibilities.PUBLIC && context.additionalExportedDeclarations.any { it.matches(fqNameWhenAvailable) }

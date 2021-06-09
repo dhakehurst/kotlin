@@ -32,6 +32,7 @@ import org.jetbrains.kotlin.js.config.DceRuntimeDiagnostic
 import org.jetbrains.kotlin.js.config.ErrorTolerancePolicy
 import org.jetbrains.kotlin.js.config.JSConfigurationKeys
 import org.jetbrains.kotlin.name.FqName
+import org.jetbrains.kotlin.name.FqNamePattern
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.resolve.scopes.MemberScope
 import org.jetbrains.kotlin.types.Variance
@@ -41,7 +42,7 @@ class JsIrBackendContext(
     override val irBuiltIns: IrBuiltIns,
     val symbolTable: SymbolTable,
     irModuleFragment: IrModuleFragment,
-    val additionalExportedDeclarationNames: Set<FqName>,
+    val additionalExportedDeclarationNames: Set<FqNamePattern>,
     override val configuration: CompilerConfiguration, // TODO: remove configuration from backend context
     override val scriptMode: Boolean = false,
     override val es6mode: Boolean = false,

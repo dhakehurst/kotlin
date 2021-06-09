@@ -182,6 +182,14 @@ class K2JSCompilerArguments : CommonCompilerArguments() {
     )
     var friendModules: String? by NullableStringFreezableVar(null)
 
+    @GradleOption(DefaultValues.StringNullDefault::class)
+    @Argument(
+        value = "-Xadditional-exports",
+        valueDescription = "<qualified-name-patterns>",
+        description = "List of fully qualified name patterns that define declarations that should be exported, separated by system path separator"
+    )
+    var additionalExports: String? by NullableStringFreezableVar(null)
+
     @Argument(value = "-Xmetadata-only", description = "Generate *.meta.js and *.kjsm files only")
     var metadataOnly: Boolean by FreezableVar(false)
 

@@ -92,11 +92,13 @@ abstract class AbstractKotlinCompileTool<T : CommonToolArguments>
     @get:Classpath
     @get:InputFiles
     internal val computedCompilerClasspath: FileCollection = project.objects.fileCollection().from({
-        when {
-            useFallbackCompilerSearch -> findKotlinCompilerClasspath(project)
-            else -> defaultCompilerClasspath
-        }
-    })
+                                                                                                       when {
+                                                                                                           useFallbackCompilerSearch -> findKotlinCompilerClasspath(
+                                                                                                               project
+                                                                                                           )
+                                                                                                           else -> defaultCompilerClasspath
+                                                                                                       }
+                                                                                                   })
 
     protected abstract fun findKotlinCompilerClasspath(project: Project): List<File>
 
@@ -582,7 +584,8 @@ abstract class Kotlin2JsCompile @Inject constructor(
         incremental = true
     }
 
-    open class Configurator<T : Kotlin2JsCompile>(compilation: KotlinCompilationData<*>) : AbstractKotlinCompile.Configurator<T>(compilation) {
+    open class Configurator<T : Kotlin2JsCompile>(compilation: KotlinCompilationData<*>) :
+        AbstractKotlinCompile.Configurator<T>(compilation) {
 
         override fun configure(task: T) {
             super.configure(task)
@@ -666,6 +669,10 @@ abstract class Kotlin2JsCompile @Inject constructor(
             it.exists() && !it.name.endsWith(".jar") && libraryFilter(it)
         }
 
+    @get:Input
+    @get:Optional
+    val additionalExports: ListProperty<String> = objects.listProperty(String::class.java)
+
     @Suppress("unused")
     @get:InputFiles
     @get:Optional
@@ -730,6 +737,8 @@ abstract class Kotlin2JsCompile @Inject constructor(
         }
 
         args.friendModules = friendDependencies.files.joinToString(File.pathSeparator) { it.absolutePath }
+
+        args.additionalExports = additionalExports.get().joinToString(File.pathSeparator)
 
         if (args.sourceMapBaseDirs == null && !args.sourceMapPrefix.isNullOrEmpty()) {
             args.sourceMapBaseDirs = absolutePathProvider

@@ -5,6 +5,12 @@ package org.jetbrains.kotlin.gradle.dsl
 interface KotlinJsOptions  : org.jetbrains.kotlin.gradle.dsl.KotlinCommonOptions {
 
     /**
+     * List of fully qualified name patterns that define declarations that should be exported, separated by system path separator
+     * Default value: null
+     */
+     var additionalExports: kotlin.String?
+
+    /**
      * Disable internal declaration export
      * Default value: false
      */

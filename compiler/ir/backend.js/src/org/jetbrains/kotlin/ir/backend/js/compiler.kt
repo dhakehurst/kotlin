@@ -5,6 +5,7 @@
 
 package org.jetbrains.kotlin.ir.backend.js
 
+import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.Project
 import org.jetbrains.kotlin.analyzer.AbstractAnalyzerWithCompilerReport
 import org.jetbrains.kotlin.backend.common.phaser.PhaseConfig
@@ -24,6 +25,7 @@ import org.jetbrains.kotlin.js.config.DceRuntimeDiagnostic
 import org.jetbrains.kotlin.library.KotlinLibrary
 import org.jetbrains.kotlin.library.resolver.KotlinLibraryResolveResult
 import org.jetbrains.kotlin.name.FqName
+import org.jetbrains.kotlin.name.FqNamePattern
 
 class CompilerResult(
     val jsCode: JsCode?,
@@ -43,7 +45,7 @@ fun compile(
     allDependencies: KotlinLibraryResolveResult,
     friendDependencies: List<KotlinLibrary>,
     mainArguments: List<String>?,
-    exportedDeclarations: Set<FqName> = emptySet(),
+    exportedDeclarations: Set<FqNamePattern> = emptySet(),
     generateFullJs: Boolean = true,
     generateDceJs: Boolean = false,
     dceDriven: Boolean = false,
