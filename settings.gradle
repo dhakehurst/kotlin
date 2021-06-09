@@ -25,9 +25,10 @@ buildscript {
         } else {
             maven { url "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-dependencies" }
         }
+        mavenCentral()
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.26")
+        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.28")
     }
 }
 
@@ -357,6 +358,7 @@ include ":prepare:ide-plugin-dependencies:android-extensions-compiler-plugin-for
         ":prepare:ide-plugin-dependencies:incremental-compilation-impl-tests-for-ide",
         ":prepare:ide-plugin-dependencies:kotlin-build-common-tests-for-ide",
         ":prepare:ide-plugin-dependencies:kotlin-compiler-for-ide",
+        ":prepare:ide-plugin-dependencies:kotlin-compiler-cli-for-ide",
         ":prepare:ide-plugin-dependencies:kotlin-dist-for-ide",
         ":prepare:ide-plugin-dependencies:kotlin-gradle-statistics-for-ide",
         ":prepare:ide-plugin-dependencies:kotlinx-serialization-compiler-plugin-for-ide",

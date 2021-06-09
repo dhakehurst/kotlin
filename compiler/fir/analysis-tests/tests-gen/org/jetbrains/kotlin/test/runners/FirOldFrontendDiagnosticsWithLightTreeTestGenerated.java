@@ -984,9 +984,21 @@ public class FirOldFrontendDiagnosticsWithLightTreeTestGenerated extends Abstrac
             }
 
             @Test
-            @TestMetadata("AnnotationForClassTypeParameter.kt")
-            public void testAnnotationForClassTypeParameter() throws Exception {
-                runTest("compiler/testData/diagnostics/tests/annotations/AnnotationForClassTypeParameter.kt");
+            @TestMetadata("AnnotationForClassTypeParameter_15.kt")
+            public void testAnnotationForClassTypeParameter_15() throws Exception {
+                runTest("compiler/testData/diagnostics/tests/annotations/AnnotationForClassTypeParameter_15.kt");
+            }
+
+            @Test
+            @TestMetadata("AnnotationForClassTypeParameter_16.kt")
+            public void testAnnotationForClassTypeParameter_16() throws Exception {
+                runTest("compiler/testData/diagnostics/tests/annotations/AnnotationForClassTypeParameter_16.kt");
+            }
+
+            @Test
+            @TestMetadata("AnnotationForClassTypeParameter_typeUseFlag.kt")
+            public void testAnnotationForClassTypeParameter_typeUseFlag() throws Exception {
+                runTest("compiler/testData/diagnostics/tests/annotations/AnnotationForClassTypeParameter_typeUseFlag.kt");
             }
 
             @Test
@@ -12384,6 +12396,12 @@ public class FirOldFrontendDiagnosticsWithLightTreeTestGenerated extends Abstrac
             }
 
             @Test
+            @TestMetadata("kt46515.kt")
+            public void testKt46515() throws Exception {
+                runTest("compiler/testData/diagnostics/tests/inference/kt46515.kt");
+            }
+
+            @Test
             @TestMetadata("kt6175.kt")
             public void testKt6175() throws Exception {
                 runTest("compiler/testData/diagnostics/tests/inference/kt6175.kt");
@@ -21260,6 +21278,12 @@ public class FirOldFrontendDiagnosticsWithLightTreeTestGenerated extends Abstrac
                 @TestMetadata("substituteSeveralOtherErasedTypeArguments.kt")
                 public void testSubstituteSeveralOtherErasedTypeArguments() throws Exception {
                     runTest("compiler/testData/diagnostics/tests/platformTypes/rawTypes/substituteSeveralOtherErasedTypeArguments.kt");
+                }
+
+                @Test
+                @TestMetadata("superTypeErasion.kt")
+                public void testSuperTypeErasion() throws Exception {
+                    runTest("compiler/testData/diagnostics/tests/platformTypes/rawTypes/superTypeErasion.kt");
                 }
 
                 @Test

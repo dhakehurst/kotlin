@@ -100,9 +100,10 @@ external public actual fun Char.isISOControl(): Boolean
 public actual fun Char.isWhitespace(): Boolean = isWhitespaceImpl()
 
 /**
- * Returns `true` if this character is an upper case letter.
+ * Returns `true` if this character is upper case.
  *
- * A character is considered to be an upper case letter if its [category] is [CharCategory.UPPERCASE_LETTER].
+ * A character is considered to be an upper case character if its [category] is [CharCategory.UPPERCASE_LETTER],
+ * or it has contributory property Other_Uppercase as defined by the Unicode Standard.
  *
  * @sample samples.text.Chars.isUpperCase
  */
@@ -117,9 +118,10 @@ public actual fun Char.isUpperCase(): Boolean {
 }
 
 /**
- * Returns `true` if this character is a lower case letter.
+ * Returns `true` if this character is lower case.
  *
- * A character is considered to be a lower case letter if its [category] is [CharCategory.LOWERCASE_LETTER].
+ * A character is considered to be a lower case character if its [category] is [CharCategory.LOWERCASE_LETTER],
+ * or it has contributory property Other_Lowercase as defined by the Unicode Standard.
  *
  * @sample samples.text.Chars.isLowerCase
  */
@@ -240,11 +242,26 @@ external public actual fun Char.isHighSurrogate(): Boolean
 @SymbolName("Kotlin_Char_isLowSurrogate")
 external public actual fun Char.isLowSurrogate(): Boolean
 
+@SharedImmutable
+private val digits = intArrayOf(
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+    -1, -1, -1, -1, -1, -1, -1,
+    10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+    30, 31, 32, 33, 34, 35,
+    -1, -1, -1, -1, -1, -1,
+    10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+    30, 31, 32, 33, 34, 35
+)
 
-internal actual fun digitOf(char: Char, radix: Int): Int = digitOfChecked(char, checkRadix(radix))
-
-@SymbolName("Kotlin_Char_digitOfChecked")
-external internal fun digitOfChecked(char: Char, radix: Int): Int
+internal actual fun digitOf(char: Char, radix: Int): Int = when {
+    char >= '0' && char <= 'z' -> digits[char - '0']
+    char < '\u0080' -> -1
+    char >= '\uFF21' && char <= '\uFF3A' -> char - '\uFF21' + 10 // full-width latin capital letter
+    char >= '\uFF41' && char <= '\uFF5A' -> char - '\uFF41' + 10 // full-width latin small letter
+    else -> char.digitToIntImpl()
+}.let { if (it >= radix) -1 else it }
 
 /**
  * Returns the Unicode general category of this character.

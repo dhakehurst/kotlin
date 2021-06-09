@@ -1584,6 +1584,11 @@ public class IrJsCodegenInlineES6TestGenerated extends AbstractIrJsCodegenInline
                 public void testPropertyReferenceFromObject() throws Exception {
                     runTest("compiler/testData/codegen/boxInline/defaultValues/lambdaInlining/callableReferences/propertyReferenceFromObject.kt");
                 }
+
+                @TestMetadata("withInlineClassParameter.kt")
+                public void testWithInlineClassParameter() throws Exception {
+                    runTest("compiler/testData/codegen/boxInline/defaultValues/lambdaInlining/callableReferences/withInlineClassParameter.kt");
+                }
             }
         }
 
@@ -3025,6 +3030,16 @@ public class IrJsCodegenInlineES6TestGenerated extends AbstractIrJsCodegenInline
             runTest("compiler/testData/codegen/boxInline/reified/kt35511_try_values.kt");
         }
 
+        @TestMetadata("kt46584.kt")
+        public void testKt46584() throws Exception {
+            runTest("compiler/testData/codegen/boxInline/reified/kt46584.kt");
+        }
+
+        @TestMetadata("kt46584_2.kt")
+        public void testKt46584_2() throws Exception {
+            runTest("compiler/testData/codegen/boxInline/reified/kt46584_2.kt");
+        }
+
         @TestMetadata("kt7017.kt")
         public void testKt7017() throws Exception {
             runTest("compiler/testData/codegen/boxInline/reified/kt7017.kt");
@@ -3930,6 +3945,16 @@ public class IrJsCodegenInlineES6TestGenerated extends AbstractIrJsCodegenInline
 
             public void testAllFilesPresentInDefaultParameter() throws Exception {
                 KtTestUtil.assertAllTestsPresentByMetadataWithExcluded(this.getClass(), new File("compiler/testData/codegen/boxInline/suspend/defaultParameter"), Pattern.compile("^(.+)\\.kt$"), null, TargetBackend.JS_IR_ES6, true);
+            }
+
+            @TestMetadata("defaultInlineLambda.kt")
+            public void testDefaultInlineLambda() throws Exception {
+                runTest("compiler/testData/codegen/boxInline/suspend/defaultParameter/defaultInlineLambda.kt");
+            }
+
+            @TestMetadata("defaultInlineReference.kt")
+            public void testDefaultInlineReference() throws Exception {
+                runTest("compiler/testData/codegen/boxInline/suspend/defaultParameter/defaultInlineReference.kt");
             }
 
             @TestMetadata("defaultValueCrossinline.kt")

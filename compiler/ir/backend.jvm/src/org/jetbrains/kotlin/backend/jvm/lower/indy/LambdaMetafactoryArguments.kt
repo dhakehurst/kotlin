@@ -28,6 +28,7 @@ import org.jetbrains.kotlin.ir.types.*
 import org.jetbrains.kotlin.ir.util.*
 import org.jetbrains.kotlin.ir.visitors.transformChildrenVoid
 import org.jetbrains.kotlin.load.java.JvmAnnotationNames
+import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.types.Variance
 import org.jetbrains.kotlin.utils.addIfNotNull
@@ -59,6 +60,11 @@ internal class LambdaMetafactoryArgumentsBuilder(
         if (!reference.origin.isLambda && !samClass.isFromJava())
             return null
 
+        // Don't use JDK LambdaMetafactory for serializable lambdas
+        // TODO implement support for serializable lambdas with LambdaMetafactory (requires additional code for deserialization)
+        if (samClass.isInheritedFromSerializable())
+            return null
+
         val samMethod = samClass.getSingleAbstractMethod()
             ?: throw AssertionError("SAM class has no single abstract method: ${samClass.render()}")
 
@@ -71,6 +77,10 @@ internal class LambdaMetafactoryArgumentsBuilder(
             return null
 
         val implFun = reference.symbol.owner
+
+        // Don't generate references to intrinsic functions as invokedynamic (no such method exists at run-time).
+        if (context.irIntrinsics.getIntrinsic(implFun.symbol) != null)
+            return null
 
         if (implFun is IrConstructor && implFun.visibility.isPrivate) {
             // Kotlin generates constructor accessors differently from Java.
@@ -117,6 +127,12 @@ internal class LambdaMetafactoryArgumentsBuilder(
         // If this results in conflicting requirements, we can't use INVOKEDYNAMIC with LambdaMetafactory for creating a closure.
         return getLambdaMetafactoryArgsOrNullInner(reference, samMethod, samType, implFun)
     }
+
+    private val javaIoSerializableFqn =
+        FqName("java.io").child(Name.identifier("Serializable"))
+
+    private fun IrClass.isInheritedFromSerializable(): Boolean =
+        getAllSuperclasses().any { it.fqNameWhenAvailable == javaIoSerializableFqn }
 
     private fun IrClass.requiresDelegationToDefaultImpls(): Boolean {
         for (irMemberFun in functions) {

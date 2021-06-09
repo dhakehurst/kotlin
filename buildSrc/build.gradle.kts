@@ -22,7 +22,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.26")
+        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.28")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${project.bootstrapKotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-sam-with-receiver:${project.bootstrapKotlinVersion}")
     }
@@ -92,7 +92,27 @@ repositories {
     }
 }
 
-val generateCompilerVersion by tasks.registering(VersionGenerator::class) {
+/*
+ A special case for the build.number that doesn't have a number in it.
+ This means that this is a final release artifacts
+ */
+open class VersionGeneratorNullableBuild : VersionGenerator() {
+    override val buildNumber: String?
+        @Optional
+        @Input
+        get() {
+            val number = project.findProperty("build.number")?.toString()
+            val buildNumberSplit = number
+                ?.split("-".toRegex())
+                ?.toTypedArray()
+            if (buildNumberSplit?.get(buildNumberSplit.size - 1)?.toIntOrNull() == null) {
+                return null
+            }
+            return number
+        }
+}
+
+val generateCompilerVersion by tasks.registering(VersionGeneratorNullableBuild::class) {
     kotlinNativeVersionInResources=true
     defaultVersionFileLocation()
 }
@@ -144,7 +164,7 @@ java {
 dependencies {
     implementation(kotlin("stdlib", embeddedKotlinVersion))
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${project.bootstrapKotlinVersion}")
-    implementation("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.26")
+    implementation("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.28")
     implementation("com.gradle.publish:plugin-publish-plugin:0.14.0")
 
     implementation("net.rubygrapefruit:native-platform:${property("versions.native-platform")}")

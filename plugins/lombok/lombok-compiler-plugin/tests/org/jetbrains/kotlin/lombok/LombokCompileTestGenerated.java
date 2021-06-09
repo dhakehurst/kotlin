@@ -30,6 +30,11 @@ public class LombokCompileTestGenerated extends AbstractLombokCompileTest {
         runTest("plugins/lombok/lombok-compiler-plugin/testData/compile/accessorsStripPrefix.kt");
     }
 
+    @TestMetadata("accessorsStripPrefixCombined.kt")
+    public void testAccessorsStripPrefixCombined() throws Exception {
+        runTest("plugins/lombok/lombok-compiler-plugin/testData/compile/accessorsStripPrefixCombined.kt");
+    }
+
     @TestMetadata("accessorsStripPrefixConfig.kt")
     public void testAccessorsStripPrefixConfig() throws Exception {
         runTest("plugins/lombok/lombok-compiler-plugin/testData/compile/accessorsStripPrefixConfig.kt");
@@ -62,6 +67,11 @@ public class LombokCompileTestGenerated extends AbstractLombokCompileTest {
     @TestMetadata("configAccessorsOverride.kt")
     public void testConfigAccessorsOverride() throws Exception {
         runTest("plugins/lombok/lombok-compiler-plugin/testData/compile/configAccessorsOverride.kt");
+    }
+
+    @TestMetadata("configCaseInsensitive.kt")
+    public void testConfigCaseInsensitive() throws Exception {
+        runTest("plugins/lombok/lombok-compiler-plugin/testData/compile/configCaseInsensitive.kt");
     }
 
     @TestMetadata("configSimple.kt")

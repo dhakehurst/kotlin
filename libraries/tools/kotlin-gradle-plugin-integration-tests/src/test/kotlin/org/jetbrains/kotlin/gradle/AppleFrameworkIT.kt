@@ -5,15 +5,15 @@
 
 package org.jetbrains.kotlin.gradle
 
+import org.jetbrains.kotlin.gradle.util.AGPVersion
 import org.jetbrains.kotlin.konan.target.HostManager
+import org.jetbrains.kotlin.test.util.KtTestUtil
 import org.junit.Assume
 import org.junit.BeforeClass
 import kotlin.test.Test
 
-class AppleFrameworkIT : KotlinAndroid36GradleIT() {
+class AppleFrameworkIT : BaseGradleIT() {
     companion object {
-        private val gradleVersion = GradleVersionRequired.FOR_MPP_SUPPORT
-
         @BeforeClass
         @JvmStatic
         fun assumeItsMac() {
@@ -21,11 +21,14 @@ class AppleFrameworkIT : KotlinAndroid36GradleIT() {
         }
     }
 
-    override val defaultGradleVersion: GradleVersionRequired
-        get() = gradleVersion
+    override val defaultGradleVersion = GradleVersionRequired.FOR_MPP_SUPPORT
+    override fun defaultBuildOptions() = super.defaultBuildOptions().copy(
+        androidHome = KtTestUtil.findAndroidSdk(),
+        androidGradlePluginVersion = AGPVersion.v3_6_0
+    )
 
     @Test
-    fun `assemble debug AppleFrameworkForXcode for IosArm64`() {
+    fun `assemble AppleFrameworkForXcode tasks for IosArm64`() {
         with(Project("sharedAppleFramework")) {
             val options: BuildOptions = defaultBuildOptions().copy(
                 customEnvironmentVariables = mapOf(
@@ -33,18 +36,18 @@ class AppleFrameworkIT : KotlinAndroid36GradleIT() {
                     "SDK_NAME" to "iphoneos123"
                 )
             )
-            build("assembleAppleFrameworkForXcode", options = options) {
+            build("assembleDebugAppleFrameworkForXcodeIosArm64", options = options) {
                 assertSuccessful()
-                assertTasksExecuted(":shared:assembleSharedDebugAppleFrameworkForXcodeIosArm64")
-                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/shared.framework")
-                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/shared.framework.dSYM")
+                assertTasksExecuted(":shared:assembleDebugAppleFrameworkForXcodeIosArm64")
+                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/sdk.framework")
+                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/sdk.framework.dSYM")
             }
 
-            build("assembleAppleFrameworkForXcode", options = options) {
+            build("assembleCustomDebugAppleFrameworkForXcodeIosArm64", options = options) {
                 assertSuccessful()
-                assertTasksUpToDate(":shared:assembleSharedDebugAppleFrameworkForXcodeIosArm64")
-                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/shared.framework")
-                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/shared.framework.dSYM")
+                assertTasksExecuted(":shared:assembleCustomDebugAppleFrameworkForXcodeIosArm64")
+                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/lib.framework")
+                assertFileExists("/shared/build/xcode-frameworks/debug/iphoneos123/lib.framework.dSYM")
             }
         }
     }
@@ -55,7 +58,7 @@ class AppleFrameworkIT : KotlinAndroid36GradleIT() {
             build("tasks") {
                 assertSuccessful()
                 assertTasksNotRegistered(
-                    ":shared:assembleAppleFrameworkForXcode",
+                    ":shared:assembleDebugAppleFrameworkForXcodeIosArm64",
                     ":shared:embedAndSignAppleFrameworkForXcode"
                 )
             }
@@ -77,11 +80,19 @@ class AppleFrameworkIT : KotlinAndroid36GradleIT() {
             build("tasks", options = options) {
                 assertSuccessful()
                 assertTasksRegistered(
-                    ":shared:assembleAppleFrameworkForXcode",
-                    ":shared:assembleSharedDebugAppleFrameworkForXcodeIosArm64",
-                    ":shared:embedAndSignAppleFrameworkForXcode"
+                    ":shared:assembleDebugAppleFrameworkForXcodeIosArm64",
+                    ":shared:embedAndSignAppleFrameworkForXcode",
+                    ":shared:assembleCustomDebugAppleFrameworkForXcodeIosArm64",
+                    ":shared:embedAndSignCustomAppleFrameworkForXcode"
                 )
-                assertTasksNotRegistered(":shared:assembleSharedDebugAppleFrameworkForXcodeIosX64")
+                assertTasksNotRegistered(
+                    ":shared:assembleDebugAppleFrameworkForXcodeIosX64",
+                    ":shared:assembleReleaseAppleFrameworkForXcodeIosX64",
+                    ":shared:assembleReleaseAppleFrameworkForXcodeIosArm64",
+                    ":shared:assembleCustomDebugAppleFrameworkForXcodeIosX64",
+                    ":shared:assembleCustomReleaseAppleFrameworkForXcodeIosX64",
+                    ":shared:assembleCustomReleaseAppleFrameworkForXcodeIosArm64"
+                )
             }
         }
     }
@@ -98,12 +109,14 @@ class AppleFrameworkIT : KotlinAndroid36GradleIT() {
             build("tasks", options = options) {
                 assertSuccessful()
                 assertTasksRegistered(
-                    ":shared:assembleAppleFrameworkForXcode",
-                    ":shared:assembleSharedDebugAppleFrameworkForXcodeIosArm64",
+                    ":shared:assembleDebugAppleFrameworkForXcodeIosArm64",
+                    ":shared:assembleCustomDebugAppleFrameworkForXcodeIosArm64"
                 )
                 assertTasksNotRegistered(
                     ":shared:embedAndSignAppleFrameworkForXcode",
-                    ":shared:assembleSharedDebugAppleFrameworkForXcodeIosX64"
+                    ":shared:assembleDebugAppleFrameworkForXcodeIosX64",
+                    ":shared:embedAndSignCustomAppleFrameworkForXcode",
+                    ":shared:assembleCustomDebugAppleFrameworkForXcodeIosX64"
                 )
             }
         }

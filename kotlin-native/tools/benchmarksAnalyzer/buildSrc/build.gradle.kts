@@ -24,6 +24,7 @@ buildscript {
 
     repositories {
         maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-dependencies")
+        mavenCentral()
         jcenter()
         project.bootstrapKotlinRepo?.let {
             maven(url = it)
@@ -31,7 +32,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.26")
+        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.28")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${project.bootstrapKotlinVersion}")
     }
 }
@@ -49,6 +50,7 @@ val cacheRedirectorEnabled = findProperty("cacheRedirectorEnabled")?.toString()?
 repositories {
     maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-dependencies")
     jcenter()
+    mavenCentral()
     gradlePluginPortal()
     extra["bootstrapKotlinRepo"]?.let {
         maven(url = it)
@@ -77,7 +79,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.26")
+    implementation("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.28")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${project.bootstrapKotlinVersion}")
     api("org.jetbrains.kotlin:kotlin-native-utils:${project.bootstrapKotlinVersion}")
     api("org.jetbrains.kotlin:kotlin-util-klib:${project.bootstrapKotlinVersion}")

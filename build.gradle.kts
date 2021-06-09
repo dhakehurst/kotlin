@@ -14,8 +14,11 @@ buildscript {
 
         if (cacheRedirectorEnabled) {
             maven("https://cache-redirector.jetbrains.com/plugins.gradle.org/m2")
+            maven("https://cache-redirector.jetbrains.com/repo.maven.apache.org/maven2")
+
         } else {
             maven("https://plugins.gradle.org/m2")
+            mavenCentral()
         }
     }
 
@@ -27,7 +30,7 @@ buildscript {
     dependencies {
         bootstrapCompilerClasspath(kotlin("compiler-embeddable", bootstrapKotlinVersion))
 
-        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.26")
+        classpath("org.jetbrains.kotlin:kotlin-build-gradle-plugin:0.0.28")
         classpath(kotlin("gradle-plugin", bootstrapKotlinVersion))
         classpath(kotlin("serialization", bootstrapKotlinVersion))
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:0.9.17")
@@ -956,6 +959,7 @@ tasks {
                 ":prepare:ide-plugin-dependencies:incremental-compilation-impl-tests-for-ide:publish",
                 ":prepare:ide-plugin-dependencies:kotlin-build-common-tests-for-ide:publish",
                 ":prepare:ide-plugin-dependencies:kotlin-compiler-for-ide:publish",
+                ":prepare:ide-plugin-dependencies:kotlin-compiler-cli-for-ide:publish",
                 ":prepare:ide-plugin-dependencies:kotlin-gradle-statistics-for-ide:publish",
                 ":prepare:ide-plugin-dependencies:kotlinx-serialization-compiler-plugin-for-ide:publish",
                 ":prepare:ide-plugin-dependencies:noarg-compiler-plugin-for-ide:publish",

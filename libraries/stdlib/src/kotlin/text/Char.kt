@@ -33,6 +33,8 @@ public fun Char.digitToInt(): Int {
  *  - [isDigit] is `true` for the Char and the Unicode decimal digit value of the character is less than the specified [radix]. In this case the decimal digit value is returned.
  *  - The Char is one of the uppercase Latin letters 'A' through 'Z' and its [code] is less than `radix + 'A'.code - 10`. In this case, `this.code - 'A'.code + 10` is returned.
  *  - The Char is one of the lowercase Latin letters 'a' through 'z' and its [code] is less than `radix + 'a'.code - 10`. In this case, `this.code - 'a'.code + 10` is returned.
+ *  - The Char is one of the fullwidth Latin capital letters '\uFF21' through '\uFF3A' and its [code] is less than `radix + 0xFF21 - 10`. In this case, `this.code - 0xFF21 + 10` is returned.
+ *  - The Char is one of the fullwidth Latin small letters '\uFF41' through '\uFF5A' and its [code] is less than `radix + 0xFF41 - 10`. In this case, `this.code - 0xFF41 + 10` is returned.
  *
  * @sample samples.text.Chars.digitToInt
  */
@@ -65,6 +67,8 @@ public fun Char.digitToIntOrNull(): Int? {
  *  - [isDigit] is `true` for the Char and the Unicode decimal digit value of the character is less than the specified [radix]. In this case the decimal digit value is returned.
  *  - The Char is one of the uppercase Latin letters 'A' through 'Z' and its [code] is less than `radix + 'A'.code - 10`. In this case, `this.code - 'A'.code + 10` is returned.
  *  - The Char is one of the lowercase Latin letters 'a' through 'z' and its [code] is less than `radix + 'a'.code - 10`. In this case, `this.code - 'a'.code + 10` is returned.
+ *  - The Char is one of the fullwidth Latin capital letters '\uFF21' through '\uFF3A' and its [code] is less than `radix + 0xFF21 - 10`. In this case, `this.code - 0xFF21 + 10` is returned.
+ *  - The Char is one of the fullwidth Latin small letters '\uFF41' through '\uFF5A' and its [code] is less than `radix + 0xFF41 - 10`. In this case, `this.code - 0xFF41 + 10` is returned.
  *
  * @sample samples.text.Chars.digitToIntOrNull
  */
@@ -292,9 +296,10 @@ public expect fun Char.isLetterOrDigit(): Boolean
 public expect fun Char.isDigit(): Boolean
 
 /**
- * Returns `true` if this character is an upper case letter.
+ * Returns `true` if this character is upper case.
  *
- * A character is considered to be an upper case letter if its [category] is [CharCategory.UPPERCASE_LETTER].
+ * A character is considered to be an upper case character if its [category] is [CharCategory.UPPERCASE_LETTER],
+ * or it has contributory property Other_Uppercase as defined by the Unicode Standard.
  *
  * @sample samples.text.Chars.isUpperCase
  */
@@ -302,9 +307,10 @@ public expect fun Char.isDigit(): Boolean
 public expect fun Char.isUpperCase(): Boolean
 
 /**
- * Returns `true` if this character is a lower case letter.
+ * Returns `true` if this character is lower case.
  *
- * A character is considered to be a lower case letter if its [category] is [CharCategory.LOWERCASE_LETTER].
+ * A character is considered to be a lower case character if its [category] is [CharCategory.LOWERCASE_LETTER],
+ * or it has contributory property Other_Lowercase as defined by the Unicode Standard.
  *
  * @sample samples.text.Chars.isLowerCase
  */

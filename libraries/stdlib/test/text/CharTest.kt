@@ -5,6 +5,7 @@
 
 package test.text
 
+import test.testOnNonJvm6And7
 import kotlin.test.*
 
 class CharTest {
@@ -80,17 +81,21 @@ class CharTest {
             }
         }
 
-        for (char in 'A'..'Z') {
-            val digit = 10 + (char - 'A')
-            val lower = char.lowercaseChar()
+        val letterRanges = listOf('A'..'Z', '\uFF21'..'\uFF3A')
 
-            for (radix in digit + 1..36) {
-                testEquals(digit, char, radix)
-                testEquals(digit, lower, radix)
-            }
-            for (radix in 2..digit) {
-                testFails(char, radix)
-                testFails(lower, radix)
+        for (range in letterRanges) {
+            for (char in range) {
+                val digit = 10 + (char - range.first)
+                val lower = char.lowercaseChar()
+
+                for (radix in digit + 1..36) {
+                    testEquals(digit, char, radix)
+                    testEquals(digit, lower, radix)
+                }
+                for (radix in 2..digit) {
+                    testFails(char, radix)
+                    testFails(lower, radix)
+                }
             }
         }
 
@@ -516,5 +521,35 @@ class CharTest {
         assertEquals('\u1000', '\u1000'.uppercaseChar())
 
         assertEquals("\uFFFF", '\uFFFF'.titlecase())
+    }
+
+    @Test
+    fun otherLowercaseProperty() {
+        testOnNonJvm6And7 {
+            val feminineOrdinalIndicator = '\u00AA'
+            assertTrue(feminineOrdinalIndicator.isLowerCase())
+            assertTrue(feminineOrdinalIndicator.isLetter())
+            assertFalse(feminineOrdinalIndicator.isUpperCase())
+
+            val circledLatinSmallLetterA = '\u24D0'
+            assertTrue(circledLatinSmallLetterA.isLowerCase())
+            assertFalse(circledLatinSmallLetterA.isLetter())
+            assertFalse(circledLatinSmallLetterA.isUpperCase())
+        }
+    }
+
+    @Test
+    fun otherUppercaseProperty() {
+        testOnNonJvm6And7 {
+            val romanNumberOne = '\u2160'
+            assertTrue(romanNumberOne.isUpperCase())
+            assertFalse(romanNumberOne.isLetter())
+            assertFalse(romanNumberOne.isLowerCase())
+
+            val circledLatinCapitalLetterZ = '\u24CF'
+            assertTrue(circledLatinCapitalLetterZ.isUpperCase())
+            assertFalse(circledLatinCapitalLetterZ.isLetter())
+            assertFalse(circledLatinCapitalLetterZ.isLowerCase())
+        }
     }
 }
