@@ -247,7 +247,7 @@ abstract class AbstractKotlinCompile<T : CommonCompilerArguments> : AbstractKotl
 
     private val kotlinLogger by lazy { GradleKotlinLogger(logger) }
 
-    final override val kotlinJavaToolchainProvider: Provider<KotlinJavaToolchainProvider> =
+    override val kotlinJavaToolchainProvider: Provider<KotlinJavaToolchainProvider> =
         objects.propertyWithNewInstance()
 
     @get:Internal
@@ -722,6 +722,10 @@ abstract class Kotlin2JsCompile @Inject constructor(
 
     @get:Internal
     internal val absolutePathProvider = project.projectDir.absolutePath
+
+    @get:Internal
+    override val kotlinJavaToolchainProvider: Provider<KotlinJavaToolchainProvider>
+        get() = super.kotlinJavaToolchainProvider
 
     override fun callCompilerAsync(args: K2JSCompilerArguments, sourceRoots: SourceRoots, changedFiles: ChangedFiles) {
         sourceRoots as SourceRoots.KotlinOnly
