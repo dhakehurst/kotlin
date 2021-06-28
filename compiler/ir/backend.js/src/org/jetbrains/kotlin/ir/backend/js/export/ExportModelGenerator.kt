@@ -396,6 +396,8 @@ private fun getExportCandidate(declaration: IrDeclaration): IrDeclarationWithNam
 }
 
 private fun shouldDeclarationBeExported(declaration: IrDeclarationWithName, context: JsIrBackendContext?): Boolean {
+    println("*** ${context?.additionalExportedDeclarationNames}")
+    println("*** fqNameWhenAvailable = '${declaration.fqNameWhenAvailable}'")
     if (context?.additionalExportedDeclarationNames?.any{ it.matches(declaration.fqNameWhenAvailable)} == true)
         return true
 
