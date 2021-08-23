@@ -26,12 +26,6 @@ public inline fun String.toRegex(option: RegexOption): Regex = Regex(this, optio
 @kotlin.internal.InlineOnly
 public inline fun String.toRegex(options: Set<RegexOption>): Regex = Regex(this, options)
 
-/**
- * Converts the glob string into a regular expression [Regex] with the default options.
- */
-public fun String.toRegexFromGlob(separator:Char): Regex = this.toRegexFromGlob(separator, emptySet())
-
-
 /*
  * Modified from code given in [https://stackoverflow.com/questions/1247772/is-there-an-equivalent-of-java-util-regex-for-glob-type-patterns]
  * ("I hereby grant that the code in this answer is in the public domain. – Neil Traft Apr 17 at 18:49")
@@ -48,8 +42,12 @@ public fun String.toRegexFromGlob(separator:Char): Regex = this.toRegexFromGlob(
  */
 /**
  * Converts the glob string into a regular expression [Regex] with the specified set of [options].
+ *
+ * @param separator the character that separates the glob parts,
+ * i.e. '.' (for kotlin qualified names) or '/' (for file paths)
+ *
  */
-public fun String.toRegexFromGlob(separator: Char, options: Set<RegexOption>): Regex {
+public fun String.toRegexFromGlob(separator: Char, options: Set<RegexOption> = emptySet()): Regex {
     val globStr = this
     var regex = ""
     var inGroup = 0

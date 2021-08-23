@@ -15,6 +15,7 @@ import org.jetbrains.kotlin.ir.declarations.persistent.carriers.Carrier
 import org.jetbrains.kotlin.ir.declarations.persistent.carriers.EnumEntryCarrier
 import org.jetbrains.kotlin.ir.expressions.IrConstructorCall
 import org.jetbrains.kotlin.ir.expressions.IrExpressionBody
+import org.jetbrains.kotlin.ir.expressions.IrGetEnumValue
 import org.jetbrains.kotlin.ir.symbols.IrClassSymbol
 import org.jetbrains.kotlin.ir.symbols.IrEnumEntrySymbol
 import org.jetbrains.kotlin.name.Name
@@ -28,7 +29,7 @@ internal class PersistentIrEnumEntry(
     override val symbol: IrEnumEntrySymbol,
     override val name: Name,
     override val factory: PersistentIrFactory
-) : IrEnumEntry(),
+) : IrGetEnumValue(),
     PersistentIrDeclarationBase<EnumEntryCarrier>,
     EnumEntryCarrier {
 
