@@ -5,9 +5,8 @@
 
 package test.text
 
-import kotlin.test.Test
-import kotlin.test.assertFailsWith
-import kotlin.test.fail
+import kotlin.test.*
+import kotlin.text.toRegexFromGlob
 
 class RegexFromGlobTest {
 
@@ -273,9 +272,9 @@ class RegexFromGlobTest {
 
     }
 
-
     @Test
-    fun test() {
+    // Test currently fails on JVM for some inputs (and JS all inputs) due to issue KT-48382
+    fun testGlobs() {
         val failed = mutableListOf<TestData>()
         for (td in testData) {
             if (td.shouldThrow) {
@@ -291,7 +290,7 @@ class RegexFromGlobTest {
             }
         }
         if (failed.isNotEmpty()) {
-            val msg = failed.joinToString(prefix = "Failed:\n", separator = "\n", postfix = "\n") { it.toString() }
+            val msg = failed.joinToString(prefix = "Failed:\n", separator = "\n", postfix = "\n") { "${it} Regex(${it.globPattern.toRegexFromGlob(it.separator)})" }
             fail(msg)
         }
     }
